@@ -1,0 +1,189 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to right, #8aed5d, #cce338);
+    color: #333;
+}
+
+/* Header Styles */
+header {
+    text-align: center;
+    padding: 20px 0;
+    background: #4a90e2;
+    color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    font-size: 40px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+/* Description Section */
+#description {
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #333;
+    padding: 30px;
+    margin: 30px auto;
+    max-width: 80%;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+#description p {
+    font-size: 20px;
+    line-height: 1.6;
+    margin: 0;
+    color: #444;
+}
+
+/* Form Container */
+.container {
+    max-width: 700px;
+    margin: 50px auto;
+    padding: 40px;
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    color: #333;
+}
+
+/* Form Heading */
+.container h1 {
+    text-align: center;
+    font-size: 24px;
+    color: #4a90e2;
+    margin-bottom: 20px;
+}
+
+/* Form Styles */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Input and Select Styles */
+form input[type="number"],
+form select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    background: #fff;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+}
+
+form input[type="number"]:focus,
+form select:focus {
+    border-color: #4a90e2;
+    outline: none;
+    box-shadow: 0 0 5px rgba(74, 144, 226, 0.5);
+}
+
+/* Labels */
+form label {
+    font-weight: bold;
+    color: #444;
+}
+
+/* Submit Button */
+form button[type="submit"] {
+    background-color: #4a90e2;
+    color: #fff;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+form button[type="submit"]:hover {
+    background-color: #3a7dc1;
+}
+
+/* Result Display */
+#result {
+    margin-top: 30px;
+    font-size: 18px;
+    text-align: center;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    color: #444;
+    font-weight: bold;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .container {
+        max-width: 90%;
+        padding: 20px;
+    }
+
+    header h1 {
+        font-size: 32px;
+    }
+
+    #description p {
+        font-size: 18px;
+    }
+
+    form {
+        gap: 15px;
+    }
+
+    form input[type="number"],
+    form select {
+        padding: 10px;
+    }
+
+    form button[type="submit"] {
+        padding: 10px;
+    }
+
+    #result {
+        padding: 15px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    header h1 {
+        font-size: 24px;
+    }
+
+    #description p {
+        font-size: 16px;
+    }
+
+    .container {
+        padding: 15px;
+    }
+
+    form {
+        gap: 10px;
+    }
+
+    form input[type="number"],
+    form select {
+        padding: 8px;
+    }
+
+    form button[type="submit"] {
+        padding: 8px;
+    }
+
+    #result {
+        padding: 10px;
+    }
+}

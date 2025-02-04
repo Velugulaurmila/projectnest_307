@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Disease Prediction</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+        .container {
+            width: 50%;
+            margin: auto;
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
+        }
+        h1 {
+            text-align: center;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .result {
+            text-align: center;
+            font-size: 20px;
+            margin-top: 20px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Heart Disease Prediction</h1>
+        <form id="predictionForm" action="/predict" method="POST">
+            
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" required>
+
+            <label for="gender">Gender (0 = Male, 1 = Female):</label>
+            <input type="number" id="gender" name="gender" required>
+
+            <label for="cholesterol">Cholesterol Level:</label>
+            <input type="number" id="cholesterol" name="cholesterol" required>
+
+            <label for="blood_pressure">Blood Pressure:</label>
+            <input type="number" id="blood_pressure" name="blood_pressure" required>
+
+            <label for="heart_rate">Heart Rate:</label>
+            <input type="number" id="heart_rate" name="heart_rate" required>
+
+            <label for="smoking">Smoking (0 = No, 1 = Yes):</label>
+            <input type="number" id="smoking" name="smoking" required>
+
+            <label for="alcohol_intake">Alcohol Intake (0 = No, 1 = Yes):</label>
+            <input type="number" id="alcohol_intake" name="alcohol_intake" required>
+
+            <label for="exercise_hours">Exercise Hours per Week:</label>
+            <input type="number" id="exercise_hours" name="exercise_hours" required>
+
+            <label for="family_history">Family History (0 = No, 1 = Yes):</label>
+            <input type="number" id="family_history" name="family_history" required>
+
+            <label for="diabetes">Diabetes (0 = No, 1 = Yes):</label>
+            <input type="number" id="diabetes" name="diabetes" required>
+
+            <label for="obesity">Obesity (0 = No, 1 = Yes):</label>
+            <input type="number" id="obesity" name="obesity" required>
+
+            <label for="stress_level">Stress Level (1 to 10):</label>
+            <input type="number" id="stress_level" name="stress_level" required>
+
+            <label for="blood_sugar">Blood Sugar Level (1 to 10):</label>
+            <input type="number" id="blood_sugar" name="blood_sugar" required>
+
+            <label for="exercise_induced_angina">Exercise Induced Angina (0 = No, 1 = Yes):</label>
+            <input type="number" id="exercise_induced_angina" name="exercise_induced_angina" required>
+
+            <label for="chest_pain_type">Chest Pain Type (0 = Type1, 1 = Type2, 2 = Type3, 3 = Type4):</label>
+            <input type="number" id="chest_pain_type" name="chest_pain_type" required>
+
+            <input type="submit" value="Predict">
+
+        </form>
+
+        <div class="result" id="result">
+            <!-- Prediction result will appear here -->
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById("predictionForm");
+
+        form.addEventListener("submit", function(event) {
+            event.preventDefault();
+            
+            const formData = new FormData(form);
+            const data = {};
+            formData.forEach((value, key) => { data[key] = value });
+
+            fetch("/predict", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(result => {
+                const resultDiv = document.getElementById("result");
+                resultDiv.innerHTML = `<strong>Prediction:</strong> ${result.prediction ? 'Heart Disease Detected' : 'No Heart Disease Detected'}`;
+            })
+            .catch(error => {
+                console.error("Error:", error);
+            });
+        });
+    </script>
+
+</body>
+</html>
